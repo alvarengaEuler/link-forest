@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://veturimagem.vercel.app/sitemap.xml
+
