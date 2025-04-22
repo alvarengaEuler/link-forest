@@ -202,10 +202,10 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden border border-red-500">
       {/* Editor Panel - Colapsável */}
       <div
-        className={`transition-all duration-300 ease-in-out ${
+        className={`border border-yellow-500 transition-all duration-300 ease-in-out ${
           showEditor ? "w-full md:w-1/2 xl:w-5/12" : "w-0 overflow-hidden"
         }`}
       >
@@ -213,7 +213,7 @@ export default function Dashboard() {
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-bold">Editar Conteúdo</h2>
             <div className="flex items-center gap-2">
-              <ThemeToggle />
+              {/* <ThemeToggle /> */}
               <Button variant="outline" size="sm" onClick={toggleEditor} className="md:hidden">
                 <ChevronRight className="h-4 w-4" />
               </Button>

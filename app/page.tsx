@@ -5,7 +5,7 @@ import type React from "react"
 import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Instagram, MapPin, Phone, MessageCircle, ChevronRight } from "lucide-react"
+import { Instagram, MapPin, Phone, MessageCircle, ChevronRight, ListMinus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -113,8 +113,8 @@ export default function Home() {
                 className="w-32 h-32 border-4 border-[#205b86] cursor-pointer transition-all hover:shadow-lg"
                 onClick={toggleAvatar}
               >
-                {!showInitials && <AvatarImage src="/placeholder.svg?height=128&width=128" alt="Dra. Ingrid Felix" />}
-                <AvatarFallback className="bg-[#205b86] text-white text-2xl">IF</AvatarFallback>
+                {!showInitials && <AvatarImage src="/if-logo.png?height=128&width=128" alt="Dra. Ingrid Felix" />}
+                <AvatarImage src="/vetur.jpg?height=128&width=128" alt="Dra. Ingrid Felix" />
               </Avatar>
               <h1 className="mt-4 text-2xl font-bold text-[#205b86]">Dra. Ingrid Felix</h1>
               <h2 className="text-lg font-medium text-foreground/80">Vetur Imagem</h2>
@@ -306,8 +306,10 @@ export default function Home() {
                   className="w-32 h-32 border-4 border-[#205b86] cursor-pointer transition-all hover:shadow-lg"
                   onClick={toggleAvatar}
                 >
-                  {!showInitials && <AvatarImage src="/placeholder.svg?height=128&width=128" alt="Dra. Ingrid Felix" />}
-                  <AvatarFallback className="bg-[#205b86] text-white text-2xl">IF</AvatarFallback>
+                  {!showInitials && <AvatarImage src="/vetur.jpg?height=128&width=128" alt="Dra. Ingrid Felix" /> }
+                  <AvatarImage src="/if-logo.png?height=128&width=128" alt="Dra. Ingrid Felix" />
+                  
+                  {/* <AvatarFallback className="bg-[#205b86] text-white text-2xl">IF</AvatarFallback> */}
                 </Avatar>
                 <h1 className="mt-4 text-2xl font-bold text-[#205b86]">Dra. Ingrid Felix</h1>
                 <h2 className="text-lg font-medium text-foreground/80">Vetur Imagem</h2>
@@ -353,7 +355,7 @@ export default function Home() {
                 </Link>
 
                 <Link href="https://wa.me/5583986916277" target="_blank" rel="noopener noreferrer">
-                  <Button className="w-full bg-green-600 hover:bg-green-700 text-white flex items-center justify-between">
+                  <Button className="w-full bg-green-600 hover:bg-green-700 text-white flex items-center justify-between mb-3">
                     <div className="flex items-center">
                       <MessageCircle size={20} className="mr-2" />
                       <span>Chamar no WhatsApp</span>
@@ -368,13 +370,7 @@ export default function Home() {
                     className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3"
                   >
                     <div className="flex items-center">
-                      <Image
-                        src="/placeholder.svg?height=20&width=20"
-                        width={20}
-                        height={20}
-                        alt="Projetos"
-                        className="mr-2"
-                      />
+                    <ListMinus size={20} className="mr-2" />
                       <span>Ver Serviços</span>
                     </div>
                     <ChevronRight size={16} />

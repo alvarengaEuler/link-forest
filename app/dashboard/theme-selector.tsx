@@ -96,13 +96,13 @@ export function ThemeSelector({
                 <RadioGroupItem value={theme.id} id={`theme-${theme.id}`} className="sr-only" />
                 <Label
                   htmlFor={`theme-${theme.id}`}
-                  className={`flex-1 cursor-pointer rounded-md border-2 p-4 hover:bg-gray-50 ${
+                  className={`flex-1 cursor-pointer rounded-md border-2 p-4 hover:text-red-500 hover:bg-gray-50 ${
                     selectedTheme === theme.id ? `border-${theme.primary} bg-${theme.secondary}/20` : "border-gray-200"
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                      <div className={`h-5 w-5 rounded-full bg-${theme.primary}`} />
+                      <div className={`h-4 w-4 rounded-full bg-${theme.primary}`} />
                       <span>{theme.name}</span>
                     </div>
                     {selectedTheme === theme.id && <Check className={`h-4 w-4 text-${theme.primary}`} />}

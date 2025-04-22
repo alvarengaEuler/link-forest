@@ -25,7 +25,7 @@ export function ProfileEditor({
   onThemeChange,
 }: ProfileEditorProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border border-pink-200">
       <Card>
         <CardHeader>
           <CardTitle>Informações do Perfil</CardTitle>
