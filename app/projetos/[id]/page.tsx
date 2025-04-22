@@ -8,6 +8,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft } from "lucide-react"
 import { useServices } from "@/hooks/use-services"
+import { goToWPP } from "@/lib/utils"
 
 export default function ProjectDetailPage() {
   const router = useRouter()
@@ -27,6 +28,12 @@ export default function ProjectDetailPage() {
       }
     }
   }, [projectId, getServiceById, isLoading])
+
+  const handleWhatsappClick = () => {
+    const phoneNumber = "5583986916277"
+    const message = `Olá! Gostaria de agendar um exame para o serviço: ${project.title}.`
+    goToWPP(message, phoneNumber)
+  }
 
   if (isLoading) {
     return (
@@ -128,11 +135,9 @@ export default function ProjectDetailPage() {
               Entre em contato para agendar um exame ou tirar dúvidas sobre este serviço.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="https://wa.me/5583986916277" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 w-full sm:w-auto">
+                <Button onClick={handleWhatsappClick} className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 w-full sm:w-auto">
                   Agendar pelo WhatsApp
                 </Button>
-              </Link>
               <Link href="tel:+5583986916277">
                 <Button variant="outline" className="px-6 py-2 w-full sm:w-auto">
                   Ligar agora

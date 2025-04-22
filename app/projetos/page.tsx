@@ -7,6 +7,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft } from "lucide-react"
 import { useServices } from "@/hooks/use-services"
+import { goToWPP } from "@/lib/utils"
 
 export default function ProjectsPage() {
   const { services, isLoading } = useServices()
@@ -23,6 +24,12 @@ export default function ProjectsPage() {
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
+
+  const handleWhatsappClick = () => {
+    const phoneNumber = "5583986916277"
+    const message = `Olá! Gostaria de agendar um exame.`
+    goToWPP(message, phoneNumber)
+  }
 
   return (
     <main className="min-h-screen bg-background relative overflow-hidden">
@@ -83,9 +90,9 @@ export default function ProjectsPage() {
                 Entre em contato para agendar um exame ou tirar dúvidas sobre nossos serviços. Atendemos em Campina
                 Grande e região.
               </p>
-              <Link href="https://wa.me/5583986916277" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2">Agendar pelo WhatsApp</Button>
-              </Link>
+              
+                <Button onClick={handleWhatsappClick} className="bg-green-600 hover:bg-green-700 text-white px-6 py-2">Agendar pelo WhatsApp</Button>
+              
             </div>
           </>
         )}

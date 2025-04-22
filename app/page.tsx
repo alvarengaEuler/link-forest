@@ -80,7 +80,6 @@ export default function Home() {
     const phoneNumber = "+5583986916277"
     const message = "Olá, gostaria de agendar um exame!"
     const encodedMessage = encodeURIComponent(message)
-    console.log(`https://wa.me/${phoneNumber}?text=${encodedMessage}`)
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank")
   }
 
@@ -182,7 +181,7 @@ export default function Home() {
                 <Link href="/projetos">
                   <Button
                     variant="outline"
-                    className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mt-3 mb-3"
+                    className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mt-3  mb-3"
                   >
                     <div className="flex items-center">
                       <Image
