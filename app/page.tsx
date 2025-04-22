@@ -76,6 +76,14 @@ export default function Home() {
     setShowInitials(!showInitials)
   }
 
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "+5583986916277"
+    const message = "Olá, gostaria de agendar um exame!"
+    const encodedMessage = encodeURIComponent(message)
+    console.log(`https://wa.me/${phoneNumber}?text=${encodedMessage}`)
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank")
+  }
+
   return (
     <main className="min-h-screen bg-background relative overflow-hidden">
       {/* Interactive line pattern background */}
@@ -161,20 +169,20 @@ export default function Home() {
                   </Button>
                 </Link>
 
-                <Link href="https://wa.me/5583986916277" target="_blank" rel="noopener noreferrer">
-                  <Button className="w-full bg-green-600 hover:bg-green-700 text-white flex items-center justify-between">
+                
+                  <Button onClick={handleWhatsAppClick} className="w-full bg-green-600 hover:bg-green-700 text-white flex items-center justify-between">
                     <div className="flex items-center">
                       <MessageCircle size={20} className="mr-2" />
                       <span>Chamar no WhatsApp</span>
                     </div>
                     <ChevronRight size={16} />
                   </Button>
-                </Link>
+               
 
                 <Link href="/projetos">
                   <Button
                     variant="outline"
-                    className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3"
+                    className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mt-3 mb-3"
                   >
                     <div className="flex items-center">
                       <Image
@@ -354,20 +362,20 @@ export default function Home() {
                   </Button>
                 </Link>
 
-                <Link href="https://wa.me/5583986916277" target="_blank" rel="noopener noreferrer">
-                  <Button className="w-full bg-green-600 hover:bg-green-700 text-white flex items-center justify-between mb-3">
+                
+                  <Button onClick={handleWhatsAppClick}  className="w-full bg-green-600 hover:bg-green-700 text-white flex items-center justify-between ">
                     <div className="flex items-center">
                       <MessageCircle size={20} className="mr-2" />
                       <span>Chamar no WhatsApp</span>
                     </div>
                     <ChevronRight size={16} />
                   </Button>
-                </Link>
+                
 
                 <Link href="/projetos">
                   <Button
                     variant="outline"
-                    className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3"
+                    className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 mt-3"
                   >
                     <div className="flex items-center">
                     <ListMinus size={20} className="mr-2" />
