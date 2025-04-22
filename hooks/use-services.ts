@@ -52,30 +52,31 @@ Recomendamos realizar o primeiro exame entre 20-25 dias após o cruzamento e aco
     recomendado: ["Confirmação de gestação", "Acompanhamento gestacional", "Avaliação pré-parto"],
   },
   {
-    id: "ecocardiograma",
-    icon: "❤️",
-    title: "Ecocardiograma",
-    description: "Avaliação detalhada da estrutura e função cardíaca para diagnóstico de cardiopatias.",
-    fullDescription: `O ecocardiograma é um exame de ultrassom especializado que avalia a estrutura e função do coração do seu pet.
-
-Este exame permite:
-
-• Visualização das câmaras cardíacas e válvulas
-• Avaliação do fluxo sanguíneo
-• Medição da espessura das paredes cardíacas
-• Detecção de alterações congênitas ou adquiridas
-• Diagnóstico de insuficiência cardíaca
-
-É um exame indolor e não invasivo, realizado com o animal acordado em posição confortável.`,
-    preparo: "Não é necessário jejum. O animal deve estar calmo para evitar alterações nos parâmetros cardíacos.",
-    duracao: "30 a 40 minutos",
+    id: "ultrasson-ocular",
+    icon: "👁️",
+    title: "Ultrasson Ocular",
+    description: "Exame por imagem que avalia estruturas internas dos olhos, ideal para detectar alterações oftálmicas.",
+    fullDescription: `O ultrasson ocular é um exame de imagem que utiliza ondas sonoras para avaliar as estruturas internas dos olhos do seu pet, especialmente quando há opacificação das estruturas oculares, como em casos de catarata.
+  
+  Este exame permite:
+  
+  • Avaliação da retina e nervo óptico  
+  • Detecção de descolamento de retina  
+  • Identificação de tumores oculares  
+  • Verificação de hemorragias ou inflamações internas  
+  • Apoio no diagnóstico de doenças intraoculares
+  
+  É um exame rápido, indolor e não invasivo, realizado com o animal acordado e levemente contido.`,
+    preparo: "Não é necessário jejum. O animal deve estar calmo; em alguns casos, pode ser necessário o uso de colírio anestésico.",
+    duracao: "15 a 20 minutos",
     recomendado: [
-      "Pets com sopros cardíacos",
-      "Raças predispostas a cardiopatias",
-      "Animais idosos",
-      "Avaliação pré-anestésica",
+      "Pets com suspeita de catarata ou cegueira súbita",
+      "Acompanhamento de doenças oculares crônicas",
+      "Avaliação pré-cirúrgica ocular",
+      "Animais com trauma ocular",
     ],
-  },
+  }
+  
   // Outros serviços...
 ]
 
