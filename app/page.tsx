@@ -5,7 +5,7 @@ import type React from "react"
 import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Instagram, MapPin, Phone, MessageCircle, ChevronRight, ListMinus } from "lucide-react"
+import { Instagram, MapPin, Phone, MessageCircle, ChevronRight, ListMinus, DownloadCloudIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -81,6 +81,14 @@ export default function Home() {
     const message = "Olá, gostaria de agendar um exame!"
     const encodedMessage = encodeURIComponent(message)
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank")
+  }
+
+  const donwloadFile = () => {
+    const fileUrl = "/recomendacoes.pdf"
+  const link = document.createElement("a")
+  link.href = fileUrl
+  link.download = "recomendacoes.pdf"
+  link.click()
   }
 
   return (
@@ -196,6 +204,7 @@ export default function Home() {
                     <ChevronRight size={16} />
                   </Button>
                 </Link>
+                
               </div>
             </div>
 
@@ -371,8 +380,9 @@ export default function Home() {
                   </Button>
                 
 
-                <Link href="/projetos">
+                
                   <Button
+                  onClick={donwloadFile}
                     variant="outline"
                     className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 mt-3"
                   >
@@ -382,7 +392,20 @@ export default function Home() {
                     </div>
                     <ChevronRight size={16} />
                   </Button>
-                </Link>
+                
+                
+                  <Button
+                    onClick={donwloadFile}
+                    variant="outline"
+                    className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 mt-3"
+                  >
+                    <div className="flex items-center">
+                    <DownloadCloudIcon  size={20} className="mr-2" />
+                      <span>Exame marcado? Baixe as recomendaçøes aqui</span>
+                    </div>
+                    <ChevronRight size={16} />
+                  </Button>
+                
               </div>
 
               {/* Tabs for Announcements and Tips */}
