@@ -1,95 +1,103 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { useEffect, useState, useRef } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Instagram, MapPin, Phone, MessageCircle, ChevronRight, ListMinus, DownloadCloudIcon } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { useTheme } from "@/contexts/theme-context"
+import { useEffect, useState, useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import {
+  Instagram,
+  MapPin,
+  Phone,
+  MessageCircle,
+  ChevronRight,
+  ListMinus,
+  DownloadCloudIcon,
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ThemeToggle } from '@/components/theme-toggle';
+import { useTheme } from '@/contexts/theme-context';
 
 export default function Home() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [scrollPosition, setScrollPosition] = useState(0)
-  const [showInitials, setShowInitials] = useState(true) // Default to showing initials
-  const [isMounted, setIsMounted] = useState(false)
-  const [isLargeScreen, setIsLargeScreen] = useState(false)
-  const [linkAnimated, setLinkAnimated] = useState(true) // Novo estado para controlar a animação
-  const linePatternRef = useRef<HTMLDivElement>(null)
-  const { theme } = useTheme()
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [showInitials, setShowInitials] = useState(true); // Default to showing initials
+  const [isMounted, setIsMounted] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const [linkAnimated, setLinkAnimated] = useState(true); // Novo estado para controlar a animação
+  const linePatternRef = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
 
   // Adicione este useEffect para desativar a animação após alguns segundos
   useEffect(() => {
     // Desativa a animação após 5 segundos
     const timer = setTimeout(() => {
-      setLinkAnimated(false)
-    }, 5000)
+      setLinkAnimated(false);
+    }, 5000);
 
-    return () => clearTimeout(timer)
-  }, [])
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
-    setIsMounted(true)
+    setIsMounted(true);
 
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({
         x: e.clientX,
         y: e.clientY,
-      })
+      });
 
       // Subtle movement of the line pattern based on mouse position
       if (linePatternRef.current) {
-        const moveX = (e.clientX - window.innerWidth / 2) / 50
-        const moveY = (e.clientY - window.innerHeight / 2) / 50
-        linePatternRef.current.style.transform = `translate(${moveX}px, ${moveY}px)`
+        const moveX = (e.clientX - window.innerWidth / 2) / 50;
+        const moveY = (e.clientY - window.innerHeight / 2) / 50;
+        linePatternRef.current.style.transform = `translate(${moveX}px, ${moveY}px)`;
       }
-    }
+    };
 
     const handleScroll = () => {
-      setScrollPosition(window.scrollY)
-    }
+      setScrollPosition(window.scrollY);
+    };
 
     const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024)
-    }
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
 
     // Initial check
-    handleResize()
+    handleResize();
 
-    window.addEventListener("mousemove", handleMouseMove)
-    window.addEventListener("scroll", handleScroll)
-    window.addEventListener("resize", handleResize)
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-      window.removeEventListener("scroll", handleScroll)
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [])
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const toggleAvatar = () => {
-    setShowInitials(!showInitials)
-  }
+    setShowInitials(!showInitials);
+  };
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = "+5583986916277"
-    const message = "Olá, gostaria de agendar um exame!"
-    const encodedMessage = encodeURIComponent(message)
-    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank")
-  }
+    const phoneNumber = '+5583986916277';
+    const message = 'Olá, gostaria de agendar um exame!';
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+  };
 
   const donwloadFile = () => {
-    const fileUrl = "/recomendacoes.pdf"
-  const link = document.createElement("a")
-  link.href = fileUrl
-  link.download = "recomendacoes.pdf"
-  link.click()
-  }
+    const fileUrl = '/recomendacoes.pdf';
+    const link = document.createElement('a');
+    link.href = fileUrl;
+    link.download = 'recomendacoes.pdf';
+    link.click();
+  };
 
   return (
     <main className="min-h-screen bg-background relative overflow-hidden">
@@ -106,8 +114,8 @@ export default function Home() {
           className="line-highlight"
           style={
             {
-              "--mouse-x": `${mousePosition.x}px`,
-              "--mouse-y": `${mousePosition.y}px`,
+              '--mouse-x': `${mousePosition.x}px`,
+              '--mouse-y': `${mousePosition.y}px`,
             } as React.CSSProperties
           }
         ></div>
@@ -128,7 +136,9 @@ export default function Home() {
                 className="w-32 h-32 border-4 border-[#205b86] cursor-pointer transition-all hover:shadow-lg"
                 onClick={toggleAvatar}
               >
-                {!showInitials && <AvatarImage src="/if-logo.png?height=128&width=128" alt="Dra. Ingrid Felix" />}
+                {!showInitials && (
+                  <AvatarImage src="/if-logo.png?height=128&width=128" alt="Dra. Ingrid Felix" />
+                )}
                 <AvatarImage src="/vetur.jpg?height=128&width=128" alt="Dra. Ingrid Felix" />
               </Avatar>
               <h1 className="mt-4 text-2xl font-bold text-[#205b86]">Dra. Ingrid Felix</h1>
@@ -150,10 +160,14 @@ export default function Home() {
             <div className="col-span-4 flex flex-col bg-card rounded-xl p-6 shadow-sm border">
               <h3 className="text-lg font-semibold mb-4 text-[#205b86]">Links Rápidos</h3>
               <div className="space-y-4 flex-1">
-                <Link href="https://instagram.com/veturimagem" target="_blank" rel="noopener noreferrer">
+                <Link
+                  href="https://instagram.com/veturimagem"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button
                     variant="outline"
-                    className={`w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 ${linkAnimated ? "link-animated" : ""}`}
+                    className={`w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 ${linkAnimated ? 'link-animated' : ''}`}
                   >
                     <div className="flex items-center">
                       <Instagram size={20} className="mr-2" />
@@ -176,15 +190,16 @@ export default function Home() {
                   </Button>
                 </Link>
 
-                
-                  <Button onClick={handleWhatsAppClick} className="w-full bg-green-600 hover:bg-green-700 text-white flex items-center justify-between">
-                    <div className="flex items-center">
-                      <MessageCircle size={20} className="mr-2" />
-                      <span>Chamar no WhatsApp</span>
-                    </div>
-                    <ChevronRight size={16} />
-                  </Button>
-               
+                <Button
+                  onClick={handleWhatsAppClick}
+                  className="w-full bg-green-600 hover:bg-green-700 text-white flex items-center justify-between"
+                >
+                  <div className="flex items-center">
+                    <MessageCircle size={20} className="mr-2" />
+                    <span>Chamar no WhatsApp</span>
+                  </div>
+                  <ChevronRight size={16} />
+                </Button>
 
                 <Link href="/projetos">
                   <Button
@@ -204,7 +219,6 @@ export default function Home() {
                     <ChevronRight size={16} />
                   </Button>
                 </Link>
-                
               </div>
             </div>
 
@@ -241,7 +255,8 @@ export default function Home() {
                     <div>
                       <h4 className="font-semibold text-[#205b86]">📅 Agendamentos</h4>
                       <p className="text-sm text-foreground/80">
-                        Disponibilidade para a próxima semana em Campina Grande! Reserve seu horário.
+                        Disponibilidade para a próxima semana em Campina Grande! Reserve seu
+                        horário.
                       </p>
                     </div>
 
@@ -265,46 +280,57 @@ export default function Home() {
                 <TabsContent value="dicas">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-h-[400px] overflow-y-auto">
                     <div className="border-b pb-3 md:border-none">
-                      <h4 className="font-medium text-[#205b86]">Duração da Avaliação Ultrassonográfica</h4>
+                      <h4 className="font-medium text-[#205b86]">
+                        Duração da Avaliação Ultrassonográfica
+                      </h4>
                       <p className="text-sm text-foreground/80">
-                        A avaliação ultrassonográfica abdominal e gestacional dura entre 20 e 30 minutos, podendo
-                        ultrapassar esse tempo e caso de doenças complexas ou pacientes pouco colaborativos.
+                        A avaliação ultrassonográfica abdominal e gestacional dura entre 20 e 30
+                        minutos, podendo ultrapassar esse tempo e caso de doenças complexas ou
+                        pacientes pouco colaborativos.
                       </p>
                     </div>
                     <div className="border-b pb-3 md:border-none">
                       <h4 className="font-medium text-[#205b86]">Preparo Necessário</h4>
                       <p className="text-sm text-foreground/80">
-                        Uso de antifisético de acordo com o médico veterinário responsável. Água a vontade. Não deixar o
-                        paciente urinar 1 hora antes do exame. Se possível, última alimentação deve ser pastosa.
+                        Uso de antifisético de acordo com o médico veterinário responsável. Água a
+                        vontade. Não deixar o paciente urinar 1 hora antes do exame. Se possível,
+                        última alimentação deve ser pastosa.
                       </p>
                     </div>
                     <div className="border-b pb-3 md:border-none">
                       <h4 className="font-medium text-[#205b86]">Atraso</h4>
                       <p className="text-sm text-foreground/80">
-                        Imprevistos podem ocorrer, nesse caso, o tempo de tolerância é de 15min. Caso não seja possível,
-                        fique tranquilo(a), agendaremos uma nova da e horário para o atendimento.
+                        Imprevistos podem ocorrer, nesse caso, o tempo de tolerância é de 15min.
+                        Caso não seja possível, fique tranquilo(a), agendaremos uma nova da e
+                        horário para o atendimento.
                       </p>
                     </div>
                     <div className="border-b pb-3 md:border-none">
                       <h4 className="font-medium text-[#205b86]">Cancelamento</h4>
                       <p className="text-sm text-foreground/80">
-                        Pedimos que avise com 1 hora de antecedência caso não possa comparecer ao exame agendado. Isso
-                        nos ajuda a reorganizar a agenda e garantir o melhor atendimento para todos.
+                        Pedimos que avise com 1 hora de antecedência caso não possa comparecer ao
+                        exame agendado. Isso nos ajuda a reorganizar a agenda e garantir o melhor
+                        atendimento para todos.
                       </p>
                     </div>
                     <div className="border-b pb-3 md:border-none">
-                      <h4 className="font-medium text-[#205b86]">Acompanhamento Ultrassonográfico</h4>
+                      <h4 className="font-medium text-[#205b86]">
+                        Acompanhamento Ultrassonográfico
+                      </h4>
                       <p className="text-sm text-foreground/80">
-                        O acompanhamento ultrassonográfico para avaliar a progressão de uma doença e/ou acompanhar a
-                        gestação, conforme indicado pelo médico veterinário responsável, será cobrado com um novo valor.
+                        O acompanhamento ultrassonográfico para avaliar a progressão de uma doença
+                        e/ou acompanhar a gestação, conforme indicado pelo médico veterinário
+                        responsável, será cobrado com um novo valor.
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-medium text-[#205b86]">Emissão de Relatório Ultrassonográfico</h4>
+                      <h4 className="font-medium text-[#205b86]">
+                        Emissão de Relatório Ultrassonográfico
+                      </h4>
                       <p className="text-sm text-foreground/80">
-                        A emissão dos relatórios ultrassonográficos, juntamente com as imagens, será feita em até 24
-                        horas úteis. Exames que tenham alterações que necessitem de intervenção de urgência, será
-                        emitido um relatório parcial.
+                        A emissão dos relatórios ultrassonográficos, juntamente com as imagens, será
+                        feita em até 24 horas úteis. Exames que tenham alterações que necessitem de
+                        intervenção de urgência, será emitido um relatório parcial.
                       </p>
                     </div>
                   </div>
@@ -322,9 +348,11 @@ export default function Home() {
                   className="w-32 h-32 border-4 border-[#205b86] cursor-pointer transition-all hover:shadow-lg"
                   onClick={toggleAvatar}
                 >
-                  {!showInitials && <AvatarImage src="/vetur.jpg?height=128&width=128" alt="Dra. Ingrid Felix" /> }
+                  {!showInitials && (
+                    <AvatarImage src="/vetur.jpg?height=128&width=128" alt="Dra. Ingrid Felix" />
+                  )}
                   <AvatarImage src="/if-logo.png?height=128&width=128" alt="Dra. Ingrid Felix" />
-                  
+
                   {/* <AvatarFallback className="bg-[#205b86] text-white text-2xl">IF</AvatarFallback> */}
                 </Avatar>
                 <h1 className="mt-4 text-2xl font-bold text-[#205b86]">Dra. Ingrid Felix</h1>
@@ -344,10 +372,14 @@ export default function Home() {
 
               {/* Links Section */}
               <div className="w-full space-y-4">
-                <Link href="https://instagram.com/veturimagem" target="_blank" rel="noopener noreferrer">
+                <Link
+                  href="https://instagram.com/veturimagem"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button
                     variant="outline"
-                    className={`w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 ${linkAnimated ? "link-animated" : ""}`}
+                    className={`w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 ${linkAnimated ? 'link-animated' : ''}`}
                   >
                     <div className="flex items-center">
                       <Instagram size={20} className="mr-2" />
@@ -370,44 +402,42 @@ export default function Home() {
                   </Button>
                 </Link>
 
-                
-                  <Button onClick={handleWhatsAppClick}  className="w-full bg-green-600 hover:bg-green-700 text-white flex items-center justify-between ">
-                    <div className="flex items-center">
-                      <MessageCircle size={20} className="mr-2" />
-                      <span>Chamar no WhatsApp</span>
-                    </div>
-                    <ChevronRight size={16} />
-                  </Button>
-                
+                <Button
+                  onClick={handleWhatsAppClick}
+                  className="w-full bg-green-600 hover:bg-green-700 text-white flex items-center justify-between "
+                >
+                  <div className="flex items-center">
+                    <MessageCircle size={20} className="mr-2" />
+                    <span>Chamar no WhatsApp</span>
+                  </div>
+                  <ChevronRight size={16} />
+                </Button>
 
-                
-                  <Button
+                <Button
                   onClick={donwloadFile}
-                    variant="outline"
-                    className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 mt-3"
-                  >
-                    <div className="flex items-center">
+                  variant="outline"
+                  className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 mt-3"
+                >
+                  <div className="flex items-center">
                     <ListMinus size={20} className="mr-2" />
-                      <span>Ver Serviços</span>
-                    </div>
-                    <ChevronRight size={16} />
-                  </Button>
-                
-                
-                  <Button
-  onClick={donwloadFile}
-  variant="outline"
-  className="w-full h-[70px] border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 mt-3 text-left"
->
-  <div className="flex items-center max-w-[85%]">
-    <DownloadCloudIcon size={20} className="mr-2 shrink-0" />
-    <span className="break-words whitespace-normal leading-snug">
-      Exame marcado? Baixe as recomendações aqui
-    </span>
-  </div>
-  <ChevronRight size={16} className="shrink-0 ml-2" />
-</Button>
-                
+                    <span>Ver Serviços</span>
+                  </div>
+                  <ChevronRight size={16} />
+                </Button>
+
+                <Button
+                  onClick={donwloadFile}
+                  variant="outline"
+                  className="w-full h-[70px] border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 mt-3 text-left"
+                >
+                  <div className="flex items-center max-w-[85%]">
+                    <DownloadCloudIcon size={20} className="mr-2 shrink-0" />
+                    <span className="break-words whitespace-normal leading-snug">
+                      Exame marcado? Baixe as recomendações aqui
+                    </span>
+                  </div>
+                  <ChevronRight size={16} className="shrink-0 ml-2" />
+                </Button>
               </div>
 
               {/* Tabs for Announcements and Tips */}
@@ -424,7 +454,8 @@ export default function Home() {
                       <div>
                         <h4 className="font-semibold text-[#205b86]">📅 Agendamentos</h4>
                         <p className="text-sm text-foreground/80">
-                          Disponibilidade para a próxima semana em Campina Grande! Reserve seu horário.
+                          Disponibilidade para a próxima semana em Campina Grande! Reserve seu
+                          horário.
                         </p>
                       </div>
 
@@ -451,46 +482,55 @@ export default function Home() {
                     <CardContent className="pt-6">
                       <div className="space-y-4 max-h-[400px] overflow-y-auto">
                         <div className="border-b pb-3">
-                          <h4 className="font-medium text-[#205b86]">Duração da Avaliação Ultrassonográfica</h4>
+                          <h4 className="font-medium text-[#205b86]">
+                            Duração da Avaliação Ultrassonográfica
+                          </h4>
                           <p className="text-sm text-foreground/80">
-                            A avaliação ultrassonográfica abdominal e gestacional dura entre 20 e 30 minutos, podendo
-                            ultrapassar esse tempo e caso de doenças complexas ou pacientes pouco colaborativos.
+                            A avaliação ultrassonográfica abdominal e gestacional dura entre 20 e 30
+                            minutos, podendo ultrapassar esse tempo e caso de doenças complexas ou
+                            pacientes pouco colaborativos.
                           </p>
                         </div>
                         <div className="border-b pb-3">
                           <h4 className="font-medium text-[#205b86]">Preparo Necessário</h4>
                           <p className="text-sm text-foreground/80">
-                            Uso de antifisético de acordo com o médico veterinário responsável. Água a vontade. Não
-                            deixar o paciente urinar 1 hora antes do exame. Se possível, última alimentação deve ser
-                            pastosa.
+                            Uso de antifisético de acordo com o médico veterinário responsável. Água
+                            a vontade. Não deixar o paciente urinar 1 hora antes do exame. Se
+                            possível, última alimentação deve ser pastosa.
                           </p>
                         </div>
                         <div className="border-b pb-3">
                           <h4 className="font-medium text-[#205b86]">Atraso</h4>
                           <p className="text-sm text-foreground/80">
-                            Imprevistos podem ocorrer, nesse caso, o tempo de tolerância é de 15min. Caso não seja
-                            possível, fique tranquilo(a), agendaremos uma nova da e horário para o atendimento.
+                            Imprevistos podem ocorrer, nesse caso, o tempo de tolerância é de 15min.
+                            Caso não seja possível, fique tranquilo(a), agendaremos uma nova da e
+                            horário para o atendimento.
                           </p>
                         </div>
                         <div className="border-b pb-3">
                           <h4 className="font-medium text-[#205b86]">Cancelamento</h4>
                           <p className="text-sm text-foreground/80">
-                            Pedimos que avise com 1 hora de antecedência caso não possa comparecer ao exame agendado.
+                            Pedimos que avise com 1 hora de antecedência caso não possa comparecer
+                            ao exame agendado.
                           </p>
                         </div>
                         <div className="border-b pb-3">
-                          <h4 className="font-medium text-[#205b86]">Acompanhamento Ultrassonográfico</h4>
+                          <h4 className="font-medium text-[#205b86]">
+                            Acompanhamento Ultrassonográfico
+                          </h4>
                           <p className="text-sm text-foreground/80">
-                            O acompanhamento ultrassonográfico para avaliar a progressão de uma doença e/ou acompanhar a
-                            gestação, conforme indicado pelo médico veterinário responsável, será cobrado com um novo
-                            valor.
+                            O acompanhamento ultrassonográfico para avaliar a progressão de uma
+                            doença e/ou acompanhar a gestação, conforme indicado pelo médico
+                            veterinário responsável, será cobrado com um novo valor.
                           </p>
                         </div>
                         <div>
-                          <h4 className="font-medium text-[#205b86]">Emissão de Relatório Ultrassonográfico</h4>
+                          <h4 className="font-medium text-[#205b86]">
+                            Emissão de Relatório Ultrassonográfico
+                          </h4>
                           <p className="text-sm text-foreground/80">
-                            A emissão dos relatórios ultrassonográficos, juntamente com as imagens, será feita em até 24
-                            horas úteis.
+                            A emissão dos relatórios ultrassonográficos, juntamente com as imagens,
+                            será feita em até 24 horas úteis.
                           </p>
                         </div>
                       </div>
@@ -529,6 +569,5 @@ export default function Home() {
         </footer>
       </div>
     </main>
-  )
+  );
 }
-

@@ -1,24 +1,31 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ViewLinks } from "@/app/dashboard/links"
-import { MapPin } from "lucide-react"
-import type { Theme } from "@/app/dashboard/theme-selector"
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Card, CardContent } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ViewLinks } from '@/app/dashboard/links';
+import { MapPin } from 'lucide-react';
+import type { Theme } from '@/app/dashboard/theme-selector';
 
 type PreviewProps = {
-  data: any
-  showInitials: boolean
-  selectedTheme: Theme
-  mousePosition: { x: string; y: string }
-  isMounted: boolean
-  toggleAvatar: () => void
-}
+  data: any;
+  showInitials: boolean;
+  selectedTheme: Theme;
+  mousePosition: { x: string; y: string };
+  isMounted: boolean;
+  toggleAvatar: () => void;
+};
 
-export function Preview({ data, showInitials, selectedTheme, mousePosition, isMounted, toggleAvatar }: PreviewProps) {
+export function Preview({
+  data,
+  showInitials,
+  selectedTheme,
+  mousePosition,
+  isMounted,
+  toggleAvatar,
+}: PreviewProps) {
   return (
     <div className="border rounded-lg overflow-hidden bg-background">
       <div className="h-[700px] overflow-y-auto">
@@ -30,8 +37,8 @@ export function Preview({ data, showInitials, selectedTheme, mousePosition, isMo
               className="line-highlight"
               style={
                 {
-                  "--mouse-x": mousePosition.x,
-                  "--mouse-y": mousePosition.y,
+                  '--mouse-x': mousePosition.x,
+                  '--mouse-y': mousePosition.y,
                 } as React.CSSProperties
               }
             ></div>
@@ -44,21 +51,27 @@ export function Preview({ data, showInitials, selectedTheme, mousePosition, isMo
                   className={`w-32 h-32 border-4 border-${selectedTheme.primary} cursor-pointer transition-all hover:shadow-lg`}
                   onClick={toggleAvatar}
                 >
-                  {!showInitials && <AvatarImage src={data.profile.avatar} alt={data.profile.name} />}
+                  {!showInitials && (
+                    <AvatarImage src={data.profile.avatar} alt={data.profile.name} />
+                  )}
                   <AvatarFallback className={`bg-${selectedTheme.primary} text-white text-2xl`}>
                     {data.profile.name
-                      .split(" ")
+                      .split(' ')
                       .map((n: string) => n[0])
-                      .join("")}
+                      .join('')}
                   </AvatarFallback>
                 </Avatar>
-                <h1 className={`mt-4 text-2xl font-bold text-${selectedTheme.primary}`}>{data.profile.name}</h1>
-                <h2 className="text-lg font-medium text-gray-600 dark:text-gray-300">{data.profile.company}</h2>
+                <h1 className={`mt-4 text-2xl font-bold text-${selectedTheme.primary}`}>
+                  {data.profile.name}
+                </h1>
+                <h2 className="text-lg font-medium text-gray-600 dark:text-gray-300">
+                  {data.profile.company}
+                </h2>
                 <p className="text-center text-sm mt-2 max-w-xs text-gray-600 dark:text-gray-300">
-                  {data.profile.bio.split("\n").map((line: string, i: number) => (
+                  {data.profile.bio.split('\n').map((line: string, i: number) => (
                     <span key={i}>
                       {line}
-                      {i < data.profile.bio.split("\n").length - 1 && <br />}
+                      {i < data.profile.bio.split('\n').length - 1 && <br />}
                     </span>
                   ))}
                 </p>
@@ -84,7 +97,9 @@ export function Preview({ data, showInitials, selectedTheme, mousePosition, isMo
                     <CardContent className="pt-6 space-y-4">
                       {data.announcements.map((announcement: any) => (
                         <div key={announcement.id}>
-                          <h4 className={`font-semibold text-${selectedTheme.primary}`}>{announcement.title}</h4>
+                          <h4 className={`font-semibold text-${selectedTheme.primary}`}>
+                            {announcement.title}
+                          </h4>
                           <p className="text-sm dark:text-gray-300">{announcement.content}</p>
                         </div>
                       ))}
@@ -98,9 +113,16 @@ export function Preview({ data, showInitials, selectedTheme, mousePosition, isMo
                     <CardContent className="pt-6">
                       <div className="space-y-4 max-h-[300px] overflow-y-auto">
                         {data.tips.map((tip: any, index: number) => (
-                          <div key={tip.id} className={index < data.tips.length - 1 ? "border-b pb-3" : ""}>
-                            <h4 className={`font-medium text-${selectedTheme.primary}`}>{tip.title}</h4>
-                            <p className="text-sm text-gray-600 dark:text-gray-300">{tip.content}</p>
+                          <div
+                            key={tip.id}
+                            className={index < data.tips.length - 1 ? 'border-b pb-3' : ''}
+                          >
+                            <h4 className={`font-medium text-${selectedTheme.primary}`}>
+                              {tip.title}
+                            </h4>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">
+                              {tip.content}
+                            </p>
                           </div>
                         ))}
                       </div>
@@ -113,6 +135,5 @@ export function Preview({ data, showInitials, selectedTheme, mousePosition, isMo
         </div>
       </div>
     </div>
-  )
+  );
 }
-

@@ -1,14 +1,14 @@
-"use client"
+'use client';
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { DraggableLinks } from "@/app/dashboard/links"
-import type { Theme } from "@/app/dashboard/theme-selector"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { DraggableLinks } from '@/app/dashboard/links';
+import type { Theme } from '@/app/dashboard/theme-selector';
 
 type LinksEditorProps = {
-  links: any[]
-  theme: Theme
-  onLinksChange: (links: any[]) => void
-}
+  links: any[];
+  theme: Theme;
+  onLinksChange: (links: any[]) => void;
+};
 
 export function LinksEditor({ links, theme, onLinksChange }: LinksEditorProps) {
   return (
@@ -21,6 +21,5 @@ export function LinksEditor({ links, theme, onLinksChange }: LinksEditorProps) {
         <DraggableLinks links={links} theme={theme} onLinksChange={onLinksChange} />
       </CardContent>
     </Card>
-  )
+  );
 }
-

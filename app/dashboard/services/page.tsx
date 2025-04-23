@@ -1,13 +1,13 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { ArrowLeft } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { ServicesList } from "@/components/dashboard/services/services-list"
-import { ServiceForm } from "@/components/dashboard/services/service-form"
-import { useServices } from "@/hooks/use-services"
-import type { Service, NewService } from "@/types/service"
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { ArrowLeft } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { ServicesList } from '@/components/dashboard/services/services-list';
+import { ServiceForm } from '@/components/dashboard/services/service-form';
+import { useServices } from '@/hooks/use-services';
+import type { Service, NewService } from '@/types/service';
 
 enum FormMode {
   NONE = 0,
@@ -16,45 +16,45 @@ enum FormMode {
 }
 
 export default function ServicesPage() {
-  const router = useRouter()
-  const { createService, updateService, isLoading } = useServices()
-  const [formMode, setFormMode] = useState<FormMode>(FormMode.NONE)
-  const [selectedService, setSelectedService] = useState<Service | null>(null)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const router = useRouter();
+  const { createService, updateService, isLoading } = useServices();
+  const [formMode, setFormMode] = useState<FormMode>(FormMode.NONE);
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleCreateNew = () => {
-    setSelectedService(null)
-    setFormMode(FormMode.CREATE)
-  }
+    setSelectedService(null);
+    setFormMode(FormMode.CREATE);
+  };
 
   const handleEdit = (service: Service) => {
-    setSelectedService(service)
-    setFormMode(FormMode.EDIT)
-  }
+    setSelectedService(service);
+    setFormMode(FormMode.EDIT);
+  };
 
   const handleCancel = () => {
-    setFormMode(FormMode.NONE)
-    setSelectedService(null)
-  }
+    setFormMode(FormMode.NONE);
+    setSelectedService(null);
+  };
 
   const handleSubmit = async (data: NewService) => {
-    setIsSubmitting(true)
+    setIsSubmitting(true);
     try {
       if (formMode === FormMode.CREATE) {
-        const success = createService(data)
+        const success = createService(data);
         if (success) {
-          setFormMode(FormMode.NONE)
+          setFormMode(FormMode.NONE);
         }
       } else if (formMode === FormMode.EDIT && selectedService) {
-        const success = updateService(selectedService.id, data)
+        const success = updateService(selectedService.id, data);
         if (success) {
-          setFormMode(FormMode.NONE)
+          setFormMode(FormMode.NONE);
         }
       }
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   if (isLoading) {
     return (
@@ -64,7 +64,7 @@ export default function ServicesPage() {
           <p className="mt-4 text-muted-foreground">Carregando serviços...</p>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -78,10 +78,10 @@ export default function ServicesPage() {
           )}
           <h1 className="text-2xl font-bold">
             {formMode === FormMode.CREATE
-              ? "Novo Serviço"
+              ? 'Novo Serviço'
               : formMode === FormMode.EDIT
-                ? "Editar Serviço"
-                : "Gerenciar Serviços"}
+                ? 'Editar Serviço'
+                : 'Gerenciar Serviços'}
           </h1>
         </div>
       </div>
@@ -97,6 +97,5 @@ export default function ServicesPage() {
         />
       )}
     </div>
-  )
+  );
 }
-

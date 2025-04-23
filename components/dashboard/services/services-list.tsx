@@ -1,13 +1,25 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import Link from "next/link"
-import { Edit, Eye, MoreHorizontal, Plus, Search, Trash2 } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { useState } from 'react';
+import Link from 'next/link';
+import { Edit, Eye, MoreHorizontal, Plus, Search, Trash2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,41 +29,41 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog"
-import { useServices } from "@/hooks/use-services"
-import type { Service } from "@/types/service"
+} from '@/components/ui/alert-dialog';
+import { useServices } from '@/hooks/use-services';
+import type { Service } from '@/types/service';
 
 interface ServicesListProps {
-  onCreateNew: () => void
-  onEdit: (service: Service) => void
+  onCreateNew: () => void;
+  onEdit: (service: Service) => void;
 }
 
 export function ServicesList({ onCreateNew, onEdit }: ServicesListProps) {
-  const { services, deleteService } = useServices()
-  const [searchTerm, setSearchTerm] = useState("")
-  const [serviceToDelete, setServiceToDelete] = useState<Service | null>(null)
+  const { services, deleteService } = useServices();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [serviceToDelete, setServiceToDelete] = useState<Service | null>(null);
 
   // Filtrar serviços com base no termo de pesquisa
   const filteredServices = services.filter(
-    (service) =>
+    service =>
       service.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       service.description.toLowerCase().includes(searchTerm.toLowerCase()),
-  )
+  );
 
   const handleDeleteClick = (service: Service) => {
-    setServiceToDelete(service)
-  }
+    setServiceToDelete(service);
+  };
 
   const handleConfirmDelete = () => {
     if (serviceToDelete) {
-      deleteService(serviceToDelete.id)
-      setServiceToDelete(null)
+      deleteService(serviceToDelete.id);
+      setServiceToDelete(null);
     }
-  }
+  };
 
   const handleCancelDelete = () => {
-    setServiceToDelete(null)
-  }
+    setServiceToDelete(null);
+  };
 
   return (
     <>
@@ -74,7 +86,7 @@ export function ServicesList({ onCreateNew, onEdit }: ServicesListProps) {
                 placeholder="Pesquisar serviços..."
                 className="pl-8"
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={e => setSearchTerm(e.target.value)}
               />
             </div>
           </div>
@@ -95,12 +107,12 @@ export function ServicesList({ onCreateNew, onEdit }: ServicesListProps) {
                   <TableRow>
                     <TableCell colSpan={5} className="text-center py-8 text-muted-foreground">
                       {searchTerm
-                        ? "Nenhum serviço encontrado para esta pesquisa."
+                        ? 'Nenhum serviço encontrado para esta pesquisa.'
                         : "Nenhum serviço cadastrado. Clique em 'Novo Serviço' para começar."}
                     </TableCell>
                   </TableRow>
                 ) : (
-                  filteredServices.map((service) => (
+                  filteredServices.map(service => (
                     <TableRow key={service.id}>
                       <TableCell>
                         <div className="w-8 h-8 rounded-md bg-[#d1e2f2] flex items-center justify-center text-lg">
@@ -131,7 +143,10 @@ export function ServicesList({ onCreateNew, onEdit }: ServicesListProps) {
                                 Visualizar
                               </Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem className="text-red-600" onClick={() => handleDeleteClick(service)}>
+                            <DropdownMenuItem
+                              className="text-red-600"
+                              onClick={() => handleDeleteClick(service)}
+                            >
                               <Trash2 className="h-4 w-4 mr-2" />
                               Excluir
                             </DropdownMenuItem>
@@ -153,18 +168,21 @@ export function ServicesList({ onCreateNew, onEdit }: ServicesListProps) {
           <AlertDialogHeader>
             <AlertDialogTitle>Confirmar exclusão</AlertDialogTitle>
             <AlertDialogDescription>
-              Tem certeza que deseja excluir o serviço "{serviceToDelete?.title}"? Esta ação não pode ser desfeita.
+              Tem certeza que deseja excluir o serviço "{serviceToDelete?.title}"? Esta ação não
+              pode ser desfeita.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel onClick={handleCancelDelete}>Cancelar</AlertDialogCancel>
-            <AlertDialogAction onClick={handleConfirmDelete} className="bg-red-600 hover:bg-red-700">
+            <AlertDialogAction
+              onClick={handleConfirmDelete}
+              className="bg-red-600 hover:bg-red-700"
+            >
               Excluir
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
     </>
-  )
+  );
 }
-

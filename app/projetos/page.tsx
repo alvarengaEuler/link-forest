@@ -1,35 +1,35 @@
-"use client"
+'use client';
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { Button } from "@/components/ui/button"
-import { ChevronLeft } from "lucide-react"
-import { useServices } from "@/hooks/use-services"
-import { goToWPP } from "@/lib/utils"
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { Card, CardContent } from '@/components/ui/card';
+import { ThemeToggle } from '@/components/theme-toggle';
+import { Button } from '@/components/ui/button';
+import { ChevronLeft } from 'lucide-react';
+import { useServices } from '@/hooks/use-services';
+import { goToWPP } from '@/lib/utils';
 
 export default function ProjectsPage() {
-  const { services, isLoading } = useServices()
-  const [isLargeScreen, setIsLargeScreen] = useState(false)
+  const { services, isLoading } = useServices();
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024)
-    }
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
 
     // Verificação inicial
-    handleResize()
+    handleResize();
 
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleWhatsappClick = () => {
-    const phoneNumber = "5583986916277"
-    const message = `Olá! Gostaria de agendar um exame.`
-    goToWPP(message, phoneNumber)
-  }
+    const phoneNumber = '5583986916277';
+    const message = `Olá! Gostaria de agendar um exame.`;
+    goToWPP(message, phoneNumber);
+  };
 
   return (
     <main className="min-h-screen bg-background relative overflow-hidden">
@@ -64,7 +64,7 @@ export default function ProjectsPage() {
           <>
             {/* Projects grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
-              {services.map((project) => (
+              {services.map(project => (
                 <Link href={`/projetos/${project.id}`} key={project.id}>
                   <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-2 hover:border-[#205b86]">
                     <CardContent className="p-6 flex flex-col h-full">
@@ -87,12 +87,16 @@ export default function ProjectsPage() {
             <div className="max-w-3xl mx-auto text-center mb-12">
               <h2 className="text-2xl font-bold text-[#205b86] mb-4">Agende seu exame</h2>
               <p className="text-foreground/80 mb-6">
-                Entre em contato para agendar um exame ou tirar dúvidas sobre nossos serviços. Atendemos em Campina
-                Grande e região.
+                Entre em contato para agendar um exame ou tirar dúvidas sobre nossos serviços.
+                Atendemos em Campina Grande e região.
               </p>
-              
-                <Button onClick={handleWhatsappClick} className="bg-green-600 hover:bg-green-700 text-white px-6 py-2">Agendar pelo WhatsApp</Button>
-              
+
+              <Button
+                onClick={handleWhatsappClick}
+                className="bg-green-600 hover:bg-green-700 text-white px-6 py-2"
+              >
+                Agendar pelo WhatsApp
+              </Button>
             </div>
           </>
         )}
@@ -103,6 +107,5 @@ export default function ProjectsPage() {
         </footer>
       </div>
     </main>
-  )
+  );
 }
-

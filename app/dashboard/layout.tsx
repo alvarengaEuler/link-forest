@@ -1,8 +1,8 @@
-"use client"
+'use client';
 
-import type React from "react"
-import Link from "next/link"
-import Image from "next/image"
+import type React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import {
   Home,
   Settings,
@@ -14,7 +14,7 @@ import {
   MessageSquare,
   Bell,
   Briefcase,
-} from "lucide-react"
+} from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
@@ -25,21 +25,19 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
-import { Button } from "@/components/ui/button"
+} from '@/components/ui/sidebar';
+import { Button } from '@/components/ui/button';
 
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
       <div className="flex min-h-screen">
         <Sidebar className="border-r">
           <SidebarHeader className="flex items-center px-4 py-2">
             <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-full bg-[#205b86] flex items-center justify-center text-white">VI</div>
+              <div className="h-8 w-8 rounded-full bg-[#205b86] flex items-center justify-center text-white">
+                VI
+              </div>
               <div className="font-semibold text-lg">Vetur Imagem</div>
             </div>
           </SidebarHeader>
@@ -151,6 +149,5 @@ export default function DashboardLayout({
         </div>
       </div>
     </SidebarProvider>
-  )
+  );
 }
-

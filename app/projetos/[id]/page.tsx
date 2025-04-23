@@ -1,39 +1,39 @@
-"use client"
+'use client';
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { useParams, useRouter } from "next/navigation"
-import { Card, CardContent } from "@/components/ui/card"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { Button } from "@/components/ui/button"
-import { ChevronLeft } from "lucide-react"
-import { useServices } from "@/hooks/use-services"
-import { goToWPP } from "@/lib/utils"
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useParams, useRouter } from 'next/navigation';
+import { Card, CardContent } from '@/components/ui/card';
+import { ThemeToggle } from '@/components/theme-toggle';
+import { Button } from '@/components/ui/button';
+import { ChevronLeft } from 'lucide-react';
+import { useServices } from '@/hooks/use-services';
+import { goToWPP } from '@/lib/utils';
 
 export default function ProjectDetailPage() {
-  const router = useRouter()
-  const params = useParams()
-  const projectId = params.id as string
-  const { getServiceById, isLoading } = useServices()
-  const [project, setProject] = useState<any>(null)
-  const [notFound, setNotFound] = useState(false)
+  const router = useRouter();
+  const params = useParams();
+  const projectId = params.id as string;
+  const { getServiceById, isLoading } = useServices();
+  const [project, setProject] = useState<any>(null);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     if (!isLoading) {
-      const foundProject = getServiceById(projectId)
+      const foundProject = getServiceById(projectId);
       if (foundProject) {
-        setProject(foundProject)
+        setProject(foundProject);
       } else {
-        setNotFound(true)
+        setNotFound(true);
       }
     }
-  }, [projectId, getServiceById, isLoading])
+  }, [projectId, getServiceById, isLoading]);
 
   const handleWhatsappClick = () => {
-    const phoneNumber = "5583986916277"
-    const message = `Olá! Gostaria de agendar um exame para o serviço: ${project.title}.`
-    goToWPP(message, phoneNumber)
-  }
+    const phoneNumber = '5583986916277';
+    const message = `Olá! Gostaria de agendar um exame para o serviço: ${project.title}.`;
+    goToWPP(message, phoneNumber);
+  };
 
   if (isLoading) {
     return (
@@ -43,7 +43,7 @@ export default function ProjectDetailPage() {
           <p className="mt-4 text-muted-foreground">Carregando serviço...</p>
         </div>
       </div>
-    )
+    );
   }
 
   if (notFound) {
@@ -56,10 +56,10 @@ export default function ProjectDetailPage() {
           </Link>
         </div>
       </div>
-    )
+    );
   }
 
-  if (!project) return null
+  if (!project) return null;
 
   return (
     <main className="min-h-screen bg-background relative overflow-hidden">
@@ -94,7 +94,9 @@ export default function ProjectDetailPage() {
             <CardContent className="p-6">
               <div className="prose max-w-none dark:prose-invert">
                 <p className="text-lg mb-4">{project.description}</p>
-                <div className="whitespace-pre-line text-foreground/80">{project.fullDescription}</div>
+                <div className="whitespace-pre-line text-foreground/80">
+                  {project.fullDescription}
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -135,9 +137,12 @@ export default function ProjectDetailPage() {
               Entre em contato para agendar um exame ou tirar dúvidas sobre este serviço.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button onClick={handleWhatsappClick} className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 w-full sm:w-auto">
-                  Agendar pelo WhatsApp
-                </Button>
+              <Button
+                onClick={handleWhatsappClick}
+                className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 w-full sm:w-auto"
+              >
+                Agendar pelo WhatsApp
+              </Button>
               <Link href="tel:+5583986916277">
                 <Button variant="outline" className="px-6 py-2 w-full sm:w-auto">
                   Ligar agora
@@ -153,6 +158,5 @@ export default function ProjectDetailPage() {
         </footer>
       </div>
     </main>
-  )
+  );
 }
-
