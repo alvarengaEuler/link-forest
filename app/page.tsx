@@ -395,16 +395,18 @@ export default function Home() {
                 
                 
                   <Button
-                    onClick={donwloadFile}
-                    variant="outline"
-                    className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 mt-3"
-                  >
-                    <div className="flex items-center">
-                    <DownloadCloudIcon  size={20} className="mr-2" />
-                      <span>Exame marcado? Baixe as recomendaçøes aqui</span>
-                    </div>
-                    <ChevronRight size={16} />
-                  </Button>
+  onClick={donwloadFile}
+  variant="outline"
+  className="w-full h-[70px] border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 mt-3 text-left"
+>
+  <div className="flex items-center max-w-[85%]">
+    <DownloadCloudIcon size={20} className="mr-2 shrink-0" />
+    <span className="break-words whitespace-normal leading-snug">
+      Exame marcado? Baixe as recomendações aqui
+    </span>
+  </div>
+  <ChevronRight size={16} className="shrink-0 ml-2" />
+</Button>
                 
               </div>
 
