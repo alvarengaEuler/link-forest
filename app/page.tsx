@@ -177,7 +177,7 @@ export default function Home() {
                   </Button>
                 </Link>
 
-                <Link href="tel:+5583986916277">
+                {/* <Link href="tel:+5583986916277">
                   <Button
                     variant="outline"
                     className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3"
@@ -188,7 +188,7 @@ export default function Home() {
                     </div>
                     <ChevronRight size={16} />
                   </Button>
-                </Link>
+                </Link> */}
 
                 <Button
                   onClick={handleWhatsAppClick}
@@ -223,7 +223,7 @@ export default function Home() {
             </div>
 
             {/* Contact Section - Spans 4 columns */}
-            <div className="col-span-4 flex flex-col bg-card rounded-xl p-6 shadow-sm border">
+            {/* <div className="col-span-4 flex flex-col bg-card rounded-xl p-6 shadow-sm border">
               <h3 className="text-lg font-bold text-[#205b86] mb-3">Contato</h3>
               <div className="space-y-3">
                 <p className="text-sm flex items-center text-foreground/80">
@@ -239,7 +239,7 @@ export default function Home() {
                   Atendimento em Campina Grande e região
                 </p>
               </div>
-            </div>
+            </div> */}
 
             {/* Tabs Section - Spans full width */}
             <div className="col-span-12 bg-card rounded-xl shadow-sm border">
@@ -376,10 +376,22 @@ export default function Home() {
                   href="https://instagram.com/veturimagem"
                   target="_blank"
                   rel="noopener noreferrer"
+                  
                 >
                   <Button
+                    onClick={handleWhatsAppClick}
+                    className={`w-full bg-green-600 hover:bg-green-700 text-white flex items-center justify-between mb-3  ${linkAnimated ? 'link-animated' : ''}`}
+                  >
+                    <div className="flex items-center">
+                      <MessageCircle size={20} className="mr-2" />
+                      <span>Chamar no WhatsApp</span>
+                    </div>
+                    <ChevronRight size={16} />
+                  </Button>
+
+                  <Button
                     variant="outline"
-                    className={`w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 ${linkAnimated ? 'link-animated' : ''}`}
+                    className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3"
                   >
                     <div className="flex items-center">
                       <Instagram size={20} className="mr-2" />
@@ -389,7 +401,7 @@ export default function Home() {
                   </Button>
                 </Link>
 
-                <Link href="tel:+5583986916277">
+                {/* <Link href="tel:+5583986916277">
                   <Button
                     variant="outline"
                     className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3"
@@ -400,31 +412,19 @@ export default function Home() {
                     </div>
                     <ChevronRight size={16} />
                   </Button>
-                </Link>
-
-                <Button
-                  onClick={handleWhatsAppClick}
-                  className="w-full bg-green-600 hover:bg-green-700 text-white flex items-center justify-between "
-                >
-                  <div className="flex items-center">
-                    <MessageCircle size={20} className="mr-2" />
-                    <span>Chamar no WhatsApp</span>
-                  </div>
-                  <ChevronRight size={16} />
-                </Button>
+                </Link> */}
 
                 <Link href="/projetos">
-                <Button
-
-variant="outline"
-className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 mt-3"
->
-<div className="flex items-center">
-  <ListMinus size={20} className="mr-2" />
-  <span>Ver Serviços</span>
-</div>
-<ChevronRight size={16} />
-</Button>
+                  <Button
+                    variant="outline"
+                    className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 mt-3"
+                  >
+                    <div className="flex items-center">
+                      <ListMinus size={20} className="mr-2" />
+                      <span>Ver Serviços</span>
+                    </div>
+                    <ChevronRight size={16} />
+                  </Button>
                 </Link>
 
                 <Button
@@ -542,7 +542,7 @@ className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] ho
               </Tabs>
 
               {/* Contact Section */}
-              <Card className="w-full border-2 border-[#205b86]">
+              {/* <Card className="w-full border-2 border-[#205b86]">
                 <CardContent className="pt-6">
                   <h3 className="text-lg font-bold text-[#205b86] mb-3">Contato</h3>
                   <div className="space-y-3">
@@ -560,7 +560,7 @@ className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] ho
                     </p>
                   </div>
                 </CardContent>
-              </Card>
+              </Card> */}
             </div>
           </div>
         )}
