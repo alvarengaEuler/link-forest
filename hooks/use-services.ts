@@ -52,11 +52,11 @@ Recomendamos realizar o primeiro exame entre 20-25 dias após o cruzamento e aco
     recomendado: ["Confirmação de gestação", "Acompanhamento gestacional", "Avaliação pré-parto"],
   },
   {
-    id: "ultrasson-ocular",
+    id: "ultrassom-ocular",
     icon: "👁️",
-    title: "Ultrasson Ocular",
+    title: "Ultrassom Ocular",
     description: "Exame por imagem que avalia estruturas internas dos olhos, ideal para detectar alterações oftálmicas.",
-    fullDescription: `O ultrasson ocular é um exame de imagem que utiliza ondas sonoras para avaliar as estruturas internas dos olhos do seu pet, especialmente quando há opacificação das estruturas oculares, como em casos de catarata.
+    fullDescription: `O ultrassom ocular é um exame de imagem que utiliza ondas sonoras para avaliar as estruturas internas dos olhos do seu pet, especialmente quando há opacificação das estruturas oculares, como em casos de catarata.
   
   Este exame permite:
   
