@@ -14,6 +14,7 @@ export default function ProjectsPage() {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
+    console.log('Services:', services[0]);
     const handleResize = () => {
       setIsLargeScreen(window.innerWidth >= 1024);
     };

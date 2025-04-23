@@ -413,17 +413,19 @@ export default function Home() {
                   <ChevronRight size={16} />
                 </Button>
 
+                <Link href="/projetos">
                 <Button
-                  onClick={donwloadFile}
-                  variant="outline"
-                  className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 mt-3"
-                >
-                  <div className="flex items-center">
-                    <ListMinus size={20} className="mr-2" />
-                    <span>Ver Serviços</span>
-                  </div>
-                  <ChevronRight size={16} />
-                </Button>
+
+variant="outline"
+className="w-full border-2 border-[#205b86] text-[#205b86] hover:bg-[#205b86] hover:text-white flex items-center justify-between mb-3 mt-3"
+>
+<div className="flex items-center">
+  <ListMinus size={20} className="mr-2" />
+  <span>Ver Serviços</span>
+</div>
+<ChevronRight size={16} />
+</Button>
+                </Link>
 
                 <Button
                   onClick={donwloadFile}
